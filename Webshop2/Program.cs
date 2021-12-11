@@ -25,7 +25,7 @@ namespace Webshop2
             }
             Console.Clear();
 
-            int sizeArray = 7;
+            int sizeArray = 8;
             Article[] articleArray = new Article[sizeArray];
 
             #region fill articleArray
@@ -39,7 +39,7 @@ namespace Webshop2
             articleArray[7] = new Article("Laptop", 5, "Elektrowaren", 699.90, 12347);
             #endregion
             
-            //ScreenArticle(articleArray);
+            ScreenArticle(articleArray);
 
             Console.ReadLine();
 
@@ -134,10 +134,10 @@ namespace Webshop2
             for (int i = 0; i <= 7; i++)
             {
                 Console.WriteLine(i+")");
-                Console.Write(articleArray[i].Articledescription);
-                Console.Write(articleArray[i].Availability);
-                Console.Write(articleArray[i].Category);
-                Console.Write(articleArray[i].Price);
+                Console.Write(articleArray[i].Articledescription+" ");
+                Console.Write(articleArray[i].Availability+" ");
+                Console.Write(articleArray[i].Category+" ");
+                Console.Write(articleArray[i].Price+",- ");
                 Console.Write(articleArray[i].Articlenumber);
                 
                 Console.WriteLine();
