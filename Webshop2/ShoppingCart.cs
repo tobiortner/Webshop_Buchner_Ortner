@@ -10,11 +10,24 @@ namespace Webshop
 
     {
 
-        #region  methods
-        public addToCart string ()
+        #region public methods
+        public void AddToCart()
         {
            
         }
+        public string ShowCart()
+        {
+            return  "test";
+        }
+        public void DeleteAllProducts()
+        {
+
+        }
+        public string Checkout()
+        {
+            return "test";
+        }
+
         #endregion
     }
 }

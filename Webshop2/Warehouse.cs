@@ -158,15 +158,21 @@ namespace Webshop
         #region public methodes
         public bool CheckAvalibility()
         {
-            bool isOk = false;
+            bool isOk = false; //avality 1-5>0
             if (true)//avalibility Item1-5>0
             {
                 isOk = true;
             }
             return isOk;
         }
-       // public void RemoveFromWarhouse()
+        public void RemoveFromWarhouse()
+        {
 
+        }
+        public string ShowAvalibility()
+        {
+            return "test";
+        }
 
         #endregion
     }
