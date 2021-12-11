@@ -158,7 +158,7 @@ namespace Webshop
         #region public methodes
         public bool CheckAvalibility()
         {
-            bool isOk = false; //avality 1-5>0
+            bool isOk = false; //avalibility 1-5>0
             if (true)//avalibility Item1-5>0
             {
                 isOk = true;
