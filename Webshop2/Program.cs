@@ -29,7 +29,7 @@ namespace Webshop2
             Article[] articleArray = new Article[sizeArray];
 
             #region fill articleArray
-            articleArray[0] = new Article("Kaffee", 5, "Lebensmittel", 5.90, 12340);
+            articleArray[0] = new Article("Kaffee", 0, "Lebensmittel", 5.90, 12340);
             articleArray[1] = new Article("Milch", 25, "Lebensmittel", 1.90, 12341);
             articleArray[2] = new Article("Teddybär", 4, "Spielzeug", 24.90, 12342);
             articleArray[3] = new Article("Spielzeugauto", 2, "Spielzeug", 34.90, 12343);
@@ -40,12 +40,12 @@ namespace Webshop2
             #endregion
             
             ScreenArticle(articleArray);
-            WriteArticleToWarehouse(articleArray);
-            
+
+            Warehouse warehouse1 = new Warehouse();
+            WriteArticleToWarehouse(articleArray, warehouse1);
+            Console.WriteLine(warehouse1.CheckAvalibility());
+            Console.WriteLine(warehouse1.ShowAvalibility());
             Console.ReadLine();
-
-
-
 
         }
         public static int InsertUserArraySize()
@@ -145,13 +145,19 @@ namespace Webshop2
 
             }
         }
-        public static void WriteArticleToWarehouse(Article[] articleArray)
+        public static void WriteArticleToWarehouse(Article[] articleArray, Warehouse warehouse1)
         {
-            int i = 0; 
+            List<int> articelnumber = new List<int>();
+            List<int> availibility = new List<int>();
+
             foreach (var article in articleArray)
             {
-                    i++;
+                articelnumber.Add(article.Articlenumber);
+                availibility.Add(article.Availability);
             }
+            warehouse1.Articelnumber = articelnumber;
+            warehouse1.Availibility = availibility;
+
         }
     }
 }
