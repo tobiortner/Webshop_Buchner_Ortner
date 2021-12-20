@@ -40,7 +40,8 @@ namespace Webshop2
             #endregion
             
             ScreenArticle(articleArray);
-
+            WriteArticleToWarehouse(articleArray);
+            
             Console.ReadLine();
 
 
@@ -142,6 +143,14 @@ namespace Webshop2
                 
                 Console.WriteLine();
 
+            }
+        }
+        public static void WriteArticleToWarehouse(Article[] articleArray)
+        {
+            int i = 0; 
+            foreach (var article in articleArray)
+            {
+                    i++;
             }
         }
     }
