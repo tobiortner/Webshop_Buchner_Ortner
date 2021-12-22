@@ -29,7 +29,7 @@ namespace Webshop2
             Article[] articleArray = new Article[sizeArray];
 
             #region fill articleArray
-            articleArray[0] = new Article("Kaffee", 5, "Lebensmittel", 5.90, 12340);
+            articleArray[0] = new Article("Kaffee", 0, "Lebensmittel", 5.90, 12340);
             articleArray[1] = new Article("Milch", 25, "Lebensmittel", 1.90, 12341);
             articleArray[2] = new Article("Teddybär", 4, "Spielzeug", 24.90, 12342);
             articleArray[3] = new Article("Spielzeugauto", 2, "Spielzeug", 34.90, 12343);
@@ -38,25 +38,26 @@ namespace Webshop2
             articleArray[6] = new Article("Fernseher", 8, "Elektrowaren", 1599.90, 12346);
             articleArray[7] = new Article("Laptop", 5, "Elektrowaren", 699.90, 12347);
             #endregion
-     
+
             ScreenArticle(articleArray);
             // User Fragen was er kaufen will
-            Console.WriteLine("Wenn sie einen Artikel ihrem Warenkorb hinzufügen möchten geben sie einfach seinen Stellplatz ein.");           
+            Console.WriteLine("Wenn sie einen Artikel ihrem Warenkorb hinzufügen möchten geben sie einfach seinen Stellplatz ein.");
             int userChoice = int.Parse(Console.ReadLine());
             while (userChoice is 1)
-                {
-                    GetArticle(userChoice, articleArray);
-                };
-           
+            {
+                GetArticle(userChoice, articleArray);
+            };
+
             // User Fragen ob er weiter einkaufen will oder shopingcart anzeigen
             //Wenn schopingcart user fragen ob er zahlen möchte oder weiter einkaufen
             //Wenn Zahlen beenden und nächsten user drann nehmen
             //wenn weiter einkaufen Warehouse wieder anzeigen
 
+            Warehouse warehouse1 = new Warehouse();
+            WriteArticleToWarehouse(articleArray, warehouse1);
+            Console.WriteLine(warehouse1.CheckAvalibility());
+            Console.WriteLine(warehouse1.ShowAvalibility());
             Console.ReadLine();
-
-
-
 
         }
         public static int InsertUserArraySize()
@@ -145,20 +146,21 @@ namespace Webshop2
         {
             for (int i = 0; i <= 7; i++)
             {
-                Console.WriteLine(i+")");
-                Console.Write(articleArray[i].Articledescription+" ");
-                Console.Write(articleArray[i].Availability+" ");
-                Console.Write(articleArray[i].Category+" ");
-                Console.Write(articleArray[i].Price+",- ");
+                Console.WriteLine(i + ")");
+                Console.Write(articleArray[i].Articledescription + " ");
+                Console.Write(articleArray[i].Availability + " ");
+                Console.Write(articleArray[i].Category + " ");
+                Console.Write(articleArray[i].Price + ",- ");
                 Console.Write(articleArray[i].Articlenumber);
-                
+
                 Console.WriteLine();
 
             }
         }
+
         public static void GetArticle(int userChoice, Article[] articleArray)
         {
-            if(userChoice == 0)
+            if (userChoice == 0)
             {
                 Console.WriteLine("Sie habe sich für Kaffe entschieden möchten sie noch weiter einkaufen oder zum Warenkrb wechseln?");
             }
@@ -190,6 +192,22 @@ namespace Webshop2
             {
                 Console.WriteLine("Sie habe sich für Laptop entschieden möchten sie noch weiter einkaufen oder zum Warenkrb wechseln?");
             }
+
+          
+        }
+        public static void WriteArticleToWarehouse(Article[] articleArray, Warehouse warehouse1)
+        {
+            List<int> articelnumber = new List<int>();
+            List<int> availibility = new List<int>();
+
+            foreach (var article in articleArray)
+            {
+                articelnumber.Add(article.Articlenumber);
+                availibility.Add(article.Availability);
+            }
+            warehouse1.Articelnumber = articelnumber;
+            warehouse1.Availibility = availibility;
+
 
         }
     }
