@@ -87,5 +87,10 @@ namespace Webshop2
         }
 
         #endregion
+
+        #region public methods
+
+
+        #endregion
     }
 }
