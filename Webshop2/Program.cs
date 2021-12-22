@@ -46,6 +46,7 @@ namespace Webshop2
             Console.WriteLine(warehouse1.CheckAvalibility());
             Console.WriteLine(warehouse1.ShowAvalibility());
             Console.ReadLine();
+            //test
 
         }
         public static int InsertUserArraySize()
