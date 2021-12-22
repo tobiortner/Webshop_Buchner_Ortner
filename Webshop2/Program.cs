@@ -48,15 +48,6 @@ namespace Webshop2
                 GetArticle(userChoice, articleArray);
             };
 
-            // User Fragen ob er weiter einkaufen will oder shopingcart anzeigen
-            //Wenn schopingcart user fragen ob er zahlen möchte oder weiter einkaufen
-            //Wenn Zahlen beenden und nächsten user drann nehmen
-            //wenn weiter einkaufen Warehouse wieder anzeigen
-
-            Warehouse warehouse1 = new Warehouse();
-            WriteArticleToWarehouse(articleArray, warehouse1);
-            Console.WriteLine(warehouse1.CheckAvalibility());
-            Console.WriteLine(warehouse1.ShowAvalibility());
             Console.ReadLine();
 
         }
