@@ -38,17 +38,38 @@ namespace Webshop2
             articleArray[6] = new Article("Fernseher", 8, "Elektrowaren", 1599.90, 12346);
             articleArray[7] = new Article("Laptop", 5, "Elektrowaren", 699.90, 12347);
             #endregion
-
             ScreenArticle(articleArray);
+
+
             // User Fragen was er kaufen will
             Console.WriteLine("Wenn sie einen Artikel ihrem Warenkorb hinzufügen möchten geben sie einfach seinen Stellplatz ein.");
-            int userChoice = int.Parse(Console.ReadLine());
-            while (userChoice is 1)
-            {
-                GetArticle(userChoice, articleArray);
-            };
+            int userChoiceArticle = int.Parse(Console.ReadLine());
+            GetArticle(userChoiceArticle, articleArray);
 
+            // Wieviel von diesem Artikel will er kaufen?
+            Console.WriteLine("Wieviele von diesem Artikel möchten sie kaufen?");
+            Console.WriteLine("Zur Verfügung stehen" + articleArray[userChoiceArticle].Availability + ".");
+
+            int userChoiceQuantitiy = int.Parse(Console.ReadLine());
+            GetCountofArticle(userChoiceQuantitiy, articleArray, userChoiceArticle);
+
+
+
+
+           
+
+            // User Fragen ob er weiter einkaufen will oder shopingcart anzeigen
+            //Wenn schopingcart user fragen ob er zahlen möchte oder weiter einkaufen
+            //Wenn Zahlen beenden und nächsten user drann nehmen
+            //wenn weiter einkaufen Warehouse wieder anzeigen
+
+
+            Warehouse warehouse1 = new Warehouse();
+            WriteArticleToWarehouse(articleArray, warehouse1);
+            Console.WriteLine(warehouse1.CheckAvalibility());
+            //Console.WriteLine(warehouse1.ShowAvalibility());
             Console.ReadLine();
+
 
         }
         public static int InsertUserArraySize()
@@ -149,42 +170,10 @@ namespace Webshop2
             }
         }
 
-        public static void GetArticle(int userChoice, Article[] articleArray)
+        public static void GetArticle(int userChoiceArticle, Article[] articleArray)
         {
-            if (userChoice == 0)
-            {
-                Console.WriteLine("Sie habe sich für Kaffe entschieden möchten sie noch weiter einkaufen oder zum Warenkrb wechseln?");
-            }
-            if (userChoice == 1)
-            {
-                Console.WriteLine("Sie habe sich für Milch entschieden möchten sie noch weiter einkaufen oder zum Warenkrb wechseln?");
-            }
-            if (userChoice == 2)
-            {
-                Console.WriteLine("Sie habe sich für Teddybär entschieden möchten sie noch weiter einkaufen oder zum Warenkrb wechseln?");
-            }
-            if (userChoice == 3)
-            {
-                Console.WriteLine("Sie habe sich für Spielzeugauto entschieden möchten sie noch weiter einkaufen oder zum Warenkrb wechseln?");
-            }
-            if (userChoice == 4)
-            {
-                Console.WriteLine("Sie habe sich für Waschmaschine entschieden möchten sie noch weiter einkaufen oder zum Warenkrb wechseln?");
-            }
-            if (userChoice == 5)
-            {
-                Console.WriteLine("Sie habe sich für Backrohr entschieden möchten sie noch weiter einkaufen oder zum Warenkrb wechseln?");
-            }
-            if (userChoice == 6)
-            {
-                Console.WriteLine("Sie habe sich für Fernseher entschieden möchten sie noch weiter einkaufen oder zum Warenkrb wechseln?");
-            }
-            if (userChoice == 7)
-            {
-                Console.WriteLine("Sie habe sich für Laptop entschieden möchten sie noch weiter einkaufen oder zum Warenkrb wechseln?");
-            }
-
-          
+            Console.Clear();
+            Console.WriteLine("Sie habe sich für " + articleArray[userChoiceArticle].Articledescription + " entschieden.");
         }
         public static void WriteArticleToWarehouse(Article[] articleArray, Warehouse warehouse1)
         {
@@ -198,8 +187,18 @@ namespace Webshop2
             }
             warehouse1.Articelnumber = articelnumber;
             warehouse1.Availibility = availibility;
-
-
+        }
+        public static void GetCountofArticle(int userChoiceQuantitiy,Article[] articleArray,int chosenArticle)
+        {
+            //Check ob Artikel noch so oft verfügbar ist
+            if (userChoiceQuantitiy <= articleArray[chosenArticle].Availability)
+            {
+                Console.WriteLine("Ihr Artikel wird " + userChoiceQuantitiy + "mal Ihrem Warenkorb hinzugefügt");
+            }
+            else
+            {
+                Console.WriteLine("Es tut mir leid ihr Artikel ist leider nicht mehr so oft verfügbar");
+            }
         }
     }
 }
